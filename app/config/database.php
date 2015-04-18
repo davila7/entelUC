@@ -1,5 +1,12 @@
 <?php
 
+$url = parse_url(getenv("mysql://ba05a1ca928469:5c3afc7f@us-cdbr-iron-east-02.cleardb.net/heroku_b28ab52f6520c10?reconnect=true"));
+
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
+
 return array(
 
 	/*
@@ -54,10 +61,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'forge',
-			'username'  => 'forge',
-			'password'  => '',
+			'host'      => $host,
+        	'database'  => $database,
+        	'username'  => $username,
+        	'password'  => $password,
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
