@@ -13,6 +13,5 @@
 
 Route::get('/', function()
 {
-	return User::all();
-	//return View::make('hello');
+	return View::make('hello');
 });
