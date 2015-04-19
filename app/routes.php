@@ -15,3 +15,25 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::get('/home1', function()
+{
+	return View::make('home.home1');
+});
+
+Route::get('/home2', function()
+{
+	return View::make('home.home2');
+});
+
+
+Route::get('/home3', function()
+{
+	return View::make('home.home3');
+});
+
+Route::get('/home4', function()
+{
+	return View::make('home.home4');
+});
