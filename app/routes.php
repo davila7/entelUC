@@ -13,27 +13,23 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('home.home');
 });
 
-
-Route::get('/home1', function()
-{
-	return View::make('home.home1');
-});
-
-Route::get('/home2', function()
-{
-	return View::make('home.home2');
-});
-
-
-Route::get('/home3', function()
-{
-	return View::make('home.home3');
-});
-
-Route::get('/home4', function()
-{
-	return View::make('home.home4');
-});
+Route::get('/admin','UserController@IndexAdmin');
+//user
+Route::get('user/list','UserController@GridUser');
+Route::any('user/edit','UserController@CrudUser');
+Route::any('user/create','UserController@CrudUser');
+//categories
+Route::get('categories/list','CategoriesController@GridCategories');
+Route::any('categories/edit','CategoriesController@CrudCategories');
+Route::any('categories/create','CategoriesController@CrudCategories');
+//subcategories
+Route::get('subcategories/list','SubCategoriesController@GridSubCategories');
+Route::any('subcategories/edit','SubCategoriesController@CrudSubCategories');
+Route::any('subcategories/create','SubCategoriesController@CrudSubCategories');
+//options
+Route::get('options/list','OptionsController@GridOptions');
+Route::any('options/edit','OptionsController@CrudOptions');
+Route::any('options/create','OptionsController@CrudOptions');
