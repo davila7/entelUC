@@ -32,7 +32,7 @@ class SubCategoriesController extends BaseController {
         $edit->add('name','Nombre', 'text')->rule('required');
         $edit->add('description','Descripción', 'textarea')->rule('required');
         $edit->add('id_categories','Categoría','select')->options(Categories::lists('name', 'id'));
-
+        $edit->add('icon','Icono', 'image')->move('img/icons/')->fit(240, 160)->preview(120,80);
         return View::make('subcategories.crud', compact('edit'));
     }
 

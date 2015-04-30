@@ -9,47 +9,25 @@
     <div class="row">
         <div class="col-sm-3">
             <!-- Left column -->
-            <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
-
+            <strong><i class="glyphicon glyphicon-wrench"></i> Menú</strong>
             <hr>
-
             <ul class="nav nav-stacked">
-                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu"><i class="glyphicon glyphicon-unchecked"></i> Back <i class="glyphicon glyphicon-chevron-down"></i></a>
-                    <ul class="nav nav-stacked collapse in" id="userMenu">
-                        <li class="active"> <a href="#"><i class="glyphicon glyphicon-flag"></i> Color 1</a></li>
-                        <li class="active"> <a href="#"><i class="glyphicon glyphicon-flag"></i> Color 2</a></li>
-                        <li class="active"> <a href="#"><i class="glyphicon glyphicon-flag"></i> Color 3</a></li>
-                    </ul>
-                </li> 
-                <li class="nav-header"> 
-                <a href="#" data-toggle="collapse" data-target="#menu2"><i class="glyphicon glyphicon-phone"></i> Front <i class="glyphicon glyphicon-chevron-right"></i></a>
-
-                    <ul class="nav nav-stacked collapse" id="menu2">
-                        <li><a href="#">Information &amp; Stats</a>
-                        </li>
-                        <li><a href="#">Views</a>
-                        </li>
-                        <li><a href="#">Requests</a>
-                        </li>
-                        <li><a href="#">Timetable</a>
-                        </li>
-                        <li><a href="#">Alerts</a>
-                        </li>
+                 @foreach ($categories as $key=>$cat)
+                 <li class="nav-header">
+                    <a href="#" data-toggle="collapse" data-target="#menu{{ $key }}">
+                        <img src="{{ asset('img/icons/'.$cat->icon) }}" height="30" width="30" /> {{ $cat->name }} <i class="glyphicon glyphicon-chevron-right"></i></a>
+                    <ul class="nav nav-stacked collapse" id="menu{{ $key }}">
+                        @foreach($cat->subcategories as $subcat)
+                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> 
+                            <img src="{{ asset('img/icons/'.$subcat->icon) }}" height="30" width="30" /> {{ $subcat->name }}</a></li>
+                        @endforeach
                     </ul>
                 </li>
-                <li class="nav-header">
-                    <a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-right"></i></a>
-                    <ul class="nav nav-stacked collapse" id="menu3">
-                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> Facebook</a></li>
-                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> Twitter</a></li>
-                    </ul>
-                </li>
+                @endforeach
             </ul>
- 
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-
             <!-- column 2 -->
             <ul class="list-inline pull-right">
                 <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>

@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home.home');
-});
+Route::get('/','HomeController@Index');
 
 Route::get('/admin','UserController@IndexAdmin');
 //user

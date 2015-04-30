@@ -29,6 +29,7 @@ class CategoriesController extends BaseController {
         $edit->link("categories/list","Lista Categorías", "TR")->back();
         $edit->add('name','Nombre', 'text')->rule('required');
         $edit->add('description','Descripción', 'textarea')->rule('required');
+        $edit->add('icon','Icono', 'image')->move('img/icons/')->fit(240, 160)->preview(120,80);
 
         return View::make('categories.crud', compact('edit'));
     }

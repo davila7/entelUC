@@ -13,5 +13,8 @@ class Categories extends Eloquent {
 	 *
 	 * @var array
 	 */
+	 public function subcategories(){
+        return $this->hasMany('SubCategories', 'id_categories');
+    }
 
 }

@@ -15,9 +15,10 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function Index()
 	{
-		return View::make('hello');
+		$categories = Categories::with('subcategories')->get();
+		return View::make('home.home')->with('categories',$categories);
 	}
 
 }

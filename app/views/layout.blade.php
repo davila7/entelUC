@@ -25,7 +25,7 @@
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="css/styles.css" rel="stylesheet">
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         {{ Rapyd::styles() }} 
 </head>
   <body>
@@ -55,20 +55,13 @@
     <!-- /container -->
 </div>
 <!-- /Header -->
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="{{ asset('js/script.js') }}"></script>
+          {{ Rapyd::scripts() }}
         <div class="container">
             @yield('content')
         </div>        
-  <!-- Scripts -->
-  <!-- script references -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script src="js/script.js"></script>
-  <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-  </script>
-  {{ Rapyd::scripts() }}
+
   </body>
 </html>
