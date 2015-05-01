@@ -25,7 +25,8 @@
                 "php": ">=5.3.3",
                 "symfony/console": "~2.1",
                 "symfony/filesystem": "~2.1",
-                "symfony/finder": "~2.1"
+                "symfony/finder": "~2.1",
+                "ext-gd": "*"
             },
             "bin": [
                 "classpreloader.php"
