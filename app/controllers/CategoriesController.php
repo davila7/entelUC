@@ -4,6 +4,7 @@ class CategoriesController extends BaseController {
 
 	public function GridCategories()
 	{
+        echo 'Versión actual de PHP: ' . phpversion();
 		$filter = DataFilter::source(new Categories);
         $filter->attributes(array('class'=>'form-inline'));
         $filter->add('name','Buscar por Nombre', 'text');
@@ -20,7 +21,7 @@ class CategoriesController extends BaseController {
         $grid->orderBy('name','desc'); 
         $grid->paginate(10); 
 
-        return View::make('categories.list', compact('filter', 'grid'));
+        //return View::make('categories.list', compact('filter', 'grid'));
 	}
 
 	public function CrudCategories(){
