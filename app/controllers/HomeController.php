@@ -15,10 +15,27 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function Index()
-	{
+	public function Index(){
 		$categories = Categories::with('subcategories')->get();
 		return View::make('home.home')->with('categories',$categories);
 	}
-
+	
+	public function GetOptions($id){
+		$options = Options::where('id_subcategories',$id)->get();
+		$data = array();
+		foreach($options as $opt){
+			$data[] = array(
+				'id'=>$opt->id,
+				'name'=>$opt->name,
+				'icon'=>$opt->icon,
+				'image'=>$opt->image
+			);
+		}
+		return Response::json($data);
+	}
+	
+	public function GetImage($id){
+		$option = Options::find($id);
+		return Response::json($option->image);
+	}
 }

@@ -4,6 +4,7 @@
 @stop
 
 @section('content')
+<script src="{{ asset('js/home.js') }}"></script>
 <!-- Main -->
 <div class="container-fluid">
     <div class="row">
@@ -15,11 +16,14 @@
                  @foreach ($categories as $key=>$cat)
                  <li class="nav-header">
                     <a href="#" data-toggle="collapse" data-target="#menu{{ $key }}">
-                        <img src="{{ asset('img/icons/'.$cat->icon) }}" height="30" width="30" /> {{ $cat->name }} <i class="glyphicon glyphicon-chevron-right"></i></a>
+                        <img class="img-rounded" src="{{ asset('img/icons/'.$cat->icon) }}" height="30" width="30" /> {{ $cat->name }} <i class="glyphicon glyphicon-chevron-right"></i></a>
                     <ul class="nav nav-stacked collapse" id="menu{{ $key }}">
                         @foreach($cat->subcategories as $subcat)
-                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> 
-                            <img src="{{ asset('img/icons/'.$subcat->icon) }}" height="30" width="30" /> {{ $subcat->name }}</a></li>
+                        <li><a href="#" data-id="{{ $subcat->id }}" class="subcat" >
+                            <i class="glyphicon glyphicon-circle"></i> 
+                            <img class="img-rounded" src="{{ asset('img/icons/'.$subcat->icon) }}" height="30" width="30" /> {{ $subcat->name }}
+                            </a>
+                        </li>
                         @endforeach
                     </ul>
                 </li>
@@ -29,7 +33,7 @@
         <!-- /col-3 -->
         <div class="col-sm-9">
             <!-- column 2 -->
-            <ul class="list-inline pull-right">
+            <!--<ul class="list-inline pull-right">
                 <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -42,51 +46,43 @@
                 <li><a title="Add Widget" data-toggle="modal" href="#addWidgetModal"><span class="glyphicon glyphicon-plus-sign"></span> Add Widget</a></li>
             </ul>
             <a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>
-            <hr>
+            <hr>-->
 
             <div class="row">
                 <!-- center left-->
-                <div class="col-md-6">
-
-                    <div class="btn-group btn-group-justified">
-                        <a href="#" class="btn btn-primary col-sm-3">
-                            <i class="glyphicon glyphicon-plus"></i>
-                            <br> Service
-                        </a>
-                        <a href="#" class="btn btn-primary col-sm-3">
-                            <i class="glyphicon glyphicon-cloud"></i>
-                            <br> Cloud
-                        </a>
-                        <a href="#" class="btn btn-primary col-sm-3">
-                            <i class="glyphicon glyphicon-cog"></i>
-                            <br> Tools
-                        </a>
-                        <a href="#" class="btn btn-primary col-sm-3">
-                            <i class="glyphicon glyphicon-question-sign"></i>
-                            <br> Help
-                        </a>
+                <div class="col-md-8">
+                    <div id="content-btn">
+                        <div class="btn-group btn-group-justified" id="div_options">
+                            <a href="#" class="btn btn-primary col-sm-3 hide btn_options" data-id="" id="hide_opt" >
+                                <img src="" height="20" width="20" class="img_options img-circle" />
+                                <div class="text_options"><br> Option Hide</div>
+                            </a>
+                        </div>
+                        <div class="btn-group btn-group-justified msg">
+                            <div class="alert alert-info">
+                                    <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+                                    Seleccione una opción del menú para ver las opciones.
+                            </div>
+                        </div>
                     </div>
 
                     <hr>
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4>Reports</h4></div>
                         <div class="panel-body">
 
-                        <img src="https://www.motorola.com/on/demandware.store/Sites-Motorola_US-Site/en_US/CONF_SVC_RedirectToAssetImage-Service?rear-color=OP102063&front-color=color-black&accent-color=OP102039&wallpaper=82PA00000116&memory=optionMemory-16&google-bootstrap=82PA00000005&pid=FLEXR2&activation-type=activation-type-NO_PLAN&view=accents&size=full"
-                        height="300" width="300" />
-                            
+                        <img src="{{ asset('uploads/options/own.png') }}" id="data_image"
+                        height="300" width="300" class="img-responsive center-block" />
                         </div>
                         <!--/panel-body-->
                     </div>
                     <!--/panel-->
                 </div>
                 <!--/col-->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Notices</h4></div>
+                            <h4 class="center-block">Öwn</h4></div>
                         <div class="panel-body">
                             <div class="alert alert-info">
                                 <button type="button" class="close" data-dismiss="alert">×</button>

@@ -14,6 +14,7 @@
 Route::get('/','HomeController@Index');
 
 Route::get('/admin','UserController@IndexAdmin');
+
 //user
 Route::get('user/list','UserController@GridUser');
 Route::any('user/edit','UserController@CrudUser');
@@ -30,3 +31,6 @@ Route::any('subcategories/create','SubCategoriesController@CrudSubCategories');
 Route::get('options/list','OptionsController@GridOptions');
 Route::any('options/edit','OptionsController@CrudOptions');
 Route::any('options/create','OptionsController@CrudOptions');
+//ajax
+Route::get('/getOptions/{id}','HomeController@GetOptions');
+Route::get('/getImage/{id}','HomeController@GetImage');

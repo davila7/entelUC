@@ -6,7 +6,7 @@
 <!--[if (gt IE 9)|!(IE)]><html lang="en" class="no-js"><![endif]-->
 <html>
 <head>
-<title>Proyecto Entel @if (Auth::check()) | {{Auth::user()->username}} @endif</title>
+<title>Entel Öwn</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +21,7 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -29,7 +29,8 @@
         {{ Rapyd::styles() }} 
 </head>
   <body>
-        <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+    <input type="hidden" id="base_url" value="{{ URL::to('/'); }}" />
+    <div id="top-nav" class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,10 +39,11 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">Entel</a>
+            <a class="navbar-brand" href="/"><img src="{{ asset('img/own-logo.png') }}" height="30" width="80" /></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/admin"><i class="glyphicon glyphicon-lock"></i> Panel de Control</a></li>
+                <li><a href="/admin"><i class="glyphicon glyphicon-cog"></i> Panel de Control</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
                     <ul id="g-account-menu" class="dropdown-menu" role="menu">

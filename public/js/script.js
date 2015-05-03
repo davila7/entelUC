@@ -1,5 +1,7 @@
 
-$(document).ready(function(){$(".alert").addClass("in").fadeOut(4500);
+$(document).ready(function(){
+	
+	//$(".alert").addClass("in").fadeOut(4500);
 
 /* swap open/close side menu icons */
 $('[data-toggle=collapse]').click(function(){
