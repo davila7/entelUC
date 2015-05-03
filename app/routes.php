@@ -16,6 +16,8 @@ Route::get('/','HomeController@Index');
 Route::get('/admin','UserController@IndexAdmin');
 
 //user
+Route::post('user/login','UserController@Login');
+Route::get('user/logout','UserController@Logout');
 Route::get('user/list','UserController@GridUser');
 Route::any('user/edit','UserController@CrudUser');
 Route::any('user/create','UserController@CrudUser');

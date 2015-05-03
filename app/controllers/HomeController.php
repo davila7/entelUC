@@ -17,7 +17,8 @@ class HomeController extends BaseController {
 
 	public function Index(){
 		$categories = Categories::with('subcategories')->get();
-		return View::make('home.home')->with('categories',$categories);
+		return View::make('home.home')->with('categories',$categories)
+									->with('error_login', false);
 	}
 	
 	public function GetOptions($id){

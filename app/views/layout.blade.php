@@ -6,7 +6,7 @@
 <!--[if (gt IE 9)|!(IE)]><html lang="en" class="no-js"><![endif]-->
 <html>
 <head>
-<title>Entel Öwn</title>
+<title>ENTEL ÖWN Mobile</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,14 +43,20 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/admin"><i class="glyphicon glyphicon-cog"></i> Panel de Control</a></li>
-                <li class="dropdown">
+                @if (Auth::check())
+                    @if (Auth::user()->esAdmin) 
+                	   <li><a href="/admin"><i class="glyphicon glyphicon-cog"></i> Panel de Control</a></li>
+                    @endif
+                @endif
+               <!-- <li class="dropdown">
                     <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
                     <ul id="g-account-menu" class="dropdown-menu" role="menu">
                         <li><a href="#">My Profile</a></li>
                     </ul>
-                </li>
-                <li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+                </li>-->
+                 @if (Auth::check()) 
+                <li><a href="{{ URL::to('/user/logout'); }}"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+                 @endif
             </ul>
         </div>
     </div>
