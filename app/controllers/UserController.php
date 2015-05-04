@@ -5,7 +5,7 @@ class UserController extends BaseController {
 	public function IndexAdmin()
 	{
         if(Auth::check()){
-            if(Auth::check()->esAdmin){
+            if(Auth::user()->esAdmin){
             return View::make('home.admin');    
             }else{
                 return Redirect::to('/');
