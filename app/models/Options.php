@@ -15,7 +15,7 @@ class Options extends Eloquent {
 	 */
 
 	public function subcategories(){
-        return $this->belongsTo('subcategories', 'id_subcategories');
+        return $this->belongsTo('SubCategories', 'id_subcategories');
     }
 
 }
