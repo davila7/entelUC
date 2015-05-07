@@ -26,6 +26,7 @@
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/step-form.css') }}" rel="stylesheet">
         {{ Rapyd::styles() }} 
 </head>
   <body>
@@ -55,7 +56,8 @@
                     </ul>
                 </li>-->
                  @if (Auth::check()) 
-                <li><a href="{{ URL::to('/user/logout'); }}"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+                 <li><a><i class="glyphicon glyphicon-user"></i> {{ Auth::user()->username }}</a></li>
+                <li><a href="{{ URL::to('/user/logout'); }}"><i class="glyphicon glyphicon-lock"></i> Cerrar Sesión</a></li>
                  @endif
             </ul>
         </div>
@@ -63,13 +65,14 @@
     <!-- /container -->
 </div>
 <!-- /Header -->
-          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-          <script src="{{ asset('js/script.js') }}"></script>
-          {{ Rapyd::scripts() }}
+         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+         <script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
         <div class="container">
             @yield('content')
         </div>        
-
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="{{ asset('js/script.js') }}"></script>
+          <script src="{{ asset('js/step-form.js') }}"></script>
+          {{ Rapyd::scripts() }}
   </body>
 </html>
