@@ -35,4 +35,54 @@ $(function() {
 		    }
 		});        
 	});
+
+	$(document).on('click', '.option-step1', function(){
+		var val = $(this).attr('data-id');
+		var btn = $(this)
+		var id_user = 0;
+		if($('#id_user').val() != ' 0 '){
+			id_user = $('#id_user').val();
+			$.ajax({ 
+		    type: 'GET', 
+		    url: $('#base_url').val()+'/step_one/'+val+'/'+id_user,
+		    dataType: 'json',
+		    success: function (data) {
+		    	$('.option-step1').removeClass('btn-success').addClass('btn-default');
+				btn.removeClass('btn-default').addClass('btn-success');
+				$('#step-one').click();
+		    }
+			});
+		}else{
+			alert('Debe iniciar sesión para guardar los datos.');
+			$('#step-one').click();
+		}
+		
+	});
+
+	$(document).on('click', '.option-step2', function(){
+		var val = $(this).attr('data-id');
+		var btn = $(this)
+		var id_user = 0;
+		if($('#id_user').val() != ' 0 '){
+			id_user = $('#id_user').val();
+			$.ajax({ 
+		    type: 'GET', 
+		    url: $('#base_url').val()+'/step_two/'+val+'/'+id_user,
+		    dataType: 'json',
+		    success: function (data) {
+		    	$('.option-step2').removeClass('btn-success').addClass('btn-default');
+				btn.removeClass('btn-default').addClass('btn-success');
+				$('#step-one').click();
+		    }
+			});
+		}else{
+			alert('Debe iniciar sesión para guardar los datos.');
+			$('#step-one').click();
+		}
+		
+	});
+
+	$(document).on('click', '.option-step2', function(){
+		$('#step-two').click();
+	});
 });

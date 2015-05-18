@@ -36,3 +36,7 @@ Route::any('options/create','OptionsController@CrudOptions');
 //ajax
 Route::get('/getOptions/{id}','HomeController@GetOptions');
 Route::get('/getImage/{id}','HomeController@GetImage');
+//step one
+Route::get('/step_one/{val}/{id_user}','HomeController@GetStepOne');
+//step two
+Route::get('/step_two/{val}/{id_user}','HomeController@GetStepTwo');

@@ -31,6 +31,7 @@
 </head>
   <body>
     <input type="hidden" id="base_url" value="{{ URL::to('/'); }}" />
+    <input type="hidden" id="id_user" value="@if (Auth::check()){{ Auth::user()->id }}@else 0 @endif" />
     <div id="top-nav" class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
