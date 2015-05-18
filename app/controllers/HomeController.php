@@ -20,17 +20,15 @@ class HomeController extends BaseController {
 		$preselection = null;
 
 		$step_one = '';
-		if(Auth::check()){
-			$pre = PreSelection::where('id_user', Auth::user()->id)->first();
-			if(isset($pre))
-			$step_one = $pre->step_one;
-		}
-
 		$step_two = '';
 		if(Auth::check()){
-			$pre = PreSelection::where('id_user', Auth::user()->id)->first();
-			if(isset($pre))
-			$step_two = $pre->step_two;
+			$pre1 = PreSelection::where('id_user', Auth::user()->id)->first();
+			if(isset($pre1))
+			$step_one = $pre1->step_one;
+
+			$pre2 = PreSelection::where('id_user', Auth::user()->id)->first();
+			if(isset($pre2))
+			$step_two = $pre2->step_two;
 		}
 		
 
@@ -87,6 +85,7 @@ class HomeController extends BaseController {
 			$pre->save();
 		}
 
+		Session::put('id_preselection', $pre->id);
 		return Response::json('ok');
 	}
 }

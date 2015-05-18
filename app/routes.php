@@ -36,7 +36,17 @@ Route::any('options/create','OptionsController@CrudOptions');
 //ajax
 Route::get('/getOptions/{id}','HomeController@GetOptions');
 Route::get('/getImage/{id}','HomeController@GetImage');
+
+//preselection
 //step one
 Route::get('/step_one/{val}/{id_user}','HomeController@GetStepOne');
 //step two
 Route::get('/step_two/{val}/{id_user}','HomeController@GetStepTwo');
+
+//orders
+Route::get('orders/list','OrdersController@GridOrders');
+
+//selection
+Route::get('selection/list','OrdersController@GridSelection');
+Route::get('getSaveSelection/{id}/{id_user}','OrdersController@GetSaveSelection');
+

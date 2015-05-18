@@ -8,6 +8,21 @@
 
 <!-- multistep form -->
 <div id="msform">
+    @if($errors->has())
+    <div class="panel panel-danger">
+            Ocurrió un problema al iniciar sesión:
+            <ul class="list-group">
+                @foreach($errors->all() as $message)
+                <li class="list-group-item">{{ $message }}</li>
+                @endforeach
+            </ul>
+    </div>
+    @endif
+    <div class="panel panel-danger login-required" style="display: none;">
+            <ul class="list-group">
+                <li class="list-group-item">Debes iniciar sesión para que tus elecciones queden registradas.</li>
+            </ul>
+    </div>
 	<!-- progressbar -->
 	<ul id="progressbar">
 		<li class="active">Elige el color de tu celular</li>
@@ -121,7 +136,7 @@
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                     
-                                            <img src="{{ asset('uploads/options/own.png') }}" id="data_image"
+                                            <img src="{{ asset('uploads/options/own.png') }}" id="image"
                                             height="300" width="300" class="img-responsive center-block" />
                                             </div>
                                             <!--/panel-body-->

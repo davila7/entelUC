@@ -15,7 +15,8 @@
 					<div class="quote">{{ HTML::link('categories/list','Categorias') }}</div>
 						<div class="quote">{{ HTML::link('subcategories/list','Sub-Categorias') }}</div>
 						<div class="quote">{{ HTML::link('options/list','Opciones') }}</div>
-					<div class="quote">{{ HTML::link('orders/list','Ordenes') }}</div>
+						<div class="quote">{{ HTML::link('orders/list','Ordenes') }}</div>
+						<div class="quote">{{ HTML::link('selection/list','Selecciones') }}</div>
 				</div>
 			</div>
 		</div>

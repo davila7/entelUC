@@ -16,26 +16,32 @@ class UserController extends BaseController {
 	}
     
     public function Login(){
-		$userdata = array(
-			'email' => Input::get('email'),
-			'password'=> Input::get('password')
-		);
-        //echo Input::get('password');
-        $categories = Categories::with('subcategories')->get();
-		if(Auth::attempt($userdata, true)){
-		    return View::make('home.home')->with('categories',$categories)
-									->with('error_login', false);
-		}else{
-			return View::make('home.home')->with('categories',$categories)
-									->with('error_login', true);
-		}
+        $rules = array('email' => 'required|email');
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()){
+		  return Redirect::to('/')->withErrors($validator);
+        }else{
+            $userdata = array(
+            'email' => Input::get('email'),
+            'password'=> Input::get('password')
+            );
+            $categories = Categories::with('subcategories')->get();
+            if(Auth::attempt($userdata, true)){
+                return Redirect::to('/');
+            }else{
+                return Redirect::to('/')->withErrors(array('message' => 'Usuario y contraseña incorrectas.'));
+            }
+        }
 	}
     
     public function Logout(){
 		Auth::logout();
         $categories = Categories::with('subcategories')->get();
-        return View::make('home.home')->with('categories',$categories)
-									->with('error_login', false);
+        return Redirect::to('/');
+        //return View::make('home.home')->with('categories',$categories)
+		//							->with('error_login', false);
 	}
     
 	public function GridUser()
