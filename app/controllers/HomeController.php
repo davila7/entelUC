@@ -22,12 +22,14 @@ class HomeController extends BaseController {
 		$step_one = '';
 		if(Auth::check()){
 			$pre = PreSelection::where('id_user', Auth::user()->id)->first();
+			if(isset($pre))
 			$step_one = $pre->step_one;
 		}
 
 		$step_two = '';
 		if(Auth::check()){
 			$pre = PreSelection::where('id_user', Auth::user()->id)->first();
+			if(isset($pre))
 			$step_two = $pre->step_two;
 		}
 		

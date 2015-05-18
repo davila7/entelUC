@@ -71,9 +71,8 @@ class UserController extends BaseController {
         $edit->add('email','Email', 'text')->rule('required');
         $edit->add('documento','RUT', 'text')->rule('required');
         $edit->add('active','Activo', 'checkbox')->rule('required');
-        //$edit->add('password','Password', 'password');
+        $edit->add('password','Password', 'password');
         $edit->add('active','Activo','checkbox');
-        $edit->set('password', Hash::make('entel'));
         
         return View::make('user.crud', compact('edit'));
     }
