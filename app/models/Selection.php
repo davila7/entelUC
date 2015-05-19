@@ -15,7 +15,7 @@ class Selection extends Eloquent {
 	 */
 
     public function preselection(){
-        return $this->belongsTo('Preselection', 'id_preselection');
+        return $this->belongsTo('PreSelection', 'id_preselection');
     }
 
     public function option(){
