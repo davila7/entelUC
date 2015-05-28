@@ -34,12 +34,12 @@ class UserController extends BaseController {
             // Send a request with it
             $result = json_decode( $fb->request( '/me' ), true );
 
-            $message = 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
-            echo $message. "<br/>";
-
-            //Var_dump
-            //display whole array().
-            dd($result);
+            $user = new User;
+            $user->username = $result['name'];
+            $user->facebook = $result['id'];
+            $user->save();
+            Auth::login($user);
+            return Redirect::to('/');
 
         }
         // if not ask for permission first
