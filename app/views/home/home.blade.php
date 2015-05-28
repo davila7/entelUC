@@ -35,14 +35,26 @@
 		<h3 class="fs-subtitle">Elige el color de tu celular</h3>
     	<div class="container-fluid">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <a class="btn @if($step_one == 1) btn-success @else btn-default @endif option-step1" data-id="1">
                              <img src="{{ asset('uploads/options/own.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                  </a>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
                                 <a class="btn @if($step_one == 2) btn-success @else btn-default @endif option-step1" data-id="2">
+                              <img src="{{ asset('uploads/options/own2.png') }}" id="data_image"
+                                            height="300" width="300" class="img-responsive center-block" />
+                                  </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a class="btn @if($step_one == 3) btn-success @else btn-default @endif option-step1" data-id="2">
+                              <img src="{{ asset('uploads/options/own2.png') }}" id="data_image"
+                                            height="300" width="300" class="img-responsive center-block" />
+                                  </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a class="btn @if($step_one == 4) btn-success @else btn-default @endif option-step1" data-id="2">
                               <img src="{{ asset('uploads/options/own2.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                   </a>
@@ -161,12 +173,7 @@
                                                         <br>
                                                         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
                                                       {{ Form::close() }}
-                                                      @if ($error_login)
-                                                      <div class="alert alert-danger">
-                                                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                                                Usuario y contraseña incorrectos.
-                                                      </div>
-                                                      @endif
+                                                      <a href="user/facebooklogin" class="btn btn-primary">Facebook</a>
                                               @endif
                                         </div>
                                         
