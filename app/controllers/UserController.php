@@ -34,7 +34,7 @@ class UserController extends BaseController {
             // Send a request with it
             $result = json_decode( $fb->request( '/me' ), true );
 
-            $user = User::where('facebook', $result['id']);
+            $user = User::where('facebook', $result['id'])->first();
             if(!isset($user)){
                 $user = new User;
                 $user->username = $result['name'];
