@@ -81,7 +81,6 @@
       <ul class="list-group">
         <li class="list-group-item"><a href="user/facebooklogin" class="btn btn-primary">Facebook</a></li>
         <li class="list-group-item"><a href="user/twitterlogin" class="btn btn-info">Twitter</a></li>
-        <li class="list-group-item"><a href="user/googlelogin" class="btn btn-danger">Google+</a></li>
       </ul>
       </div>
       <div class="modal-footer">
