@@ -34,10 +34,13 @@ class UserController extends BaseController {
             // Send a request with it
             $result = json_decode( $fb->request( '/me' ), true );
 
-            $user = new User;
-            $user->username = $result['name'];
-            $user->facebook = $result['id'];
-            $user->save();
+            $user = User::where('facebook', $result['id']);
+            if(!isset($user)){
+                $user = new User;
+                $user->username = $result['name'];
+                $user->facebook = $result['id'];
+                $user->save();
+            }
             Auth::login($user);
             return Redirect::to('/');
 
