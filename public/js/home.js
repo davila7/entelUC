@@ -37,15 +37,16 @@ $(function() {
 			});  
 		}else{
 				$('.login-required').fadeIn('slow');
+				setTimeout(function(){ $('.login-required').hide("slow"); }, 4000);
 				$.ajax({ 
-		    	type: 'GET', 
-		    	url: $('#base_url').val()+'/getImage/'+id,
-		    	dataType: 'json',
-		    	success: function (data) {
-					url = $('#base_url').val()+'/uploads/options/'+data;
-					$('#data_image').attr('src',url);
-		    	}
-			});    
+			    	type: 'GET', 
+			    	url: $('#base_url').val()+'/getImage/'+id,
+			    	dataType: 'json',
+			    	success: function (data) {
+						url = $('#base_url').val()+'/uploads/options/'+data;
+						$('#data_image').attr('src',url);
+			    	}
+				});    
 		}      
 	});
 
@@ -67,6 +68,7 @@ $(function() {
 			});
 		}else{
 			$('.login-required').fadeIn('slow');
+			setTimeout(function(){ $('.login-required').hide("slow"); }, 4000);
 			$('#step-one').click();
 		}
 		
@@ -90,6 +92,7 @@ $(function() {
 			});
 		}else{
 			$('.login-required').fadeIn('slow');
+			setTimeout(function(){ $('.login-required').hide("slow"); }, 4000);
 			$('#step-two').click();
 		}
 	});

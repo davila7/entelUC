@@ -25,14 +25,14 @@
     </div>
 	<!-- progressbar -->
 	<ul id="progressbar">
-		<li class="active">Elige el color de tu celular</li>
+		<li class="active">Elige el color de tu smartphone</li>
 		<li>Elige una opción para personalizar</li>
 		<li>Personaliza</li>
 	</ul>
 	<!-- fieldsets -->
 	<fieldset>
 		<h2 class="fs-title">Paso 1</h2>
-		<h3 class="fs-subtitle">Elige el color de tu celular</h3>
+		<h3 class="fs-subtitle">Elige el color de tu smartphone</h3>
     	<div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-3">
@@ -173,7 +173,6 @@
                                                         <br>
                                                         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
                                                       {{ Form::close() }}
-                                                      <a href="user/facebooklogin" class="btn btn-primary">Facebook</a>
                                               @endif
                                         </div>
                                         

@@ -59,6 +59,8 @@
                  @if (Auth::check()) 
                  <li><a><i class="glyphicon glyphicon-user"></i> {{ Auth::user()->username }}</a></li>
                 <li><a href="{{ URL::to('/user/logout'); }}"><i class="glyphicon glyphicon-lock"></i> Cerrar Sesión</a></li>
+                 @else
+                 <li><a href="#" data-toggle="modal" data-target="#modalIS"><i class="glyphicon glyphicon-hand-right"></i> Iniciar Sesión</a></li>
                  @endif
             </ul>
         </div>
@@ -66,6 +68,30 @@
     <!-- /container -->
 </div>
 <!-- /Header -->
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" id="modalIS" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Inicia Sesión con:</h4>
+      </div>
+      <div class="modal-body">
+      <ul class="list-group">
+        <li class="list-group-item"><a href="user/facebooklogin" class="btn btn-primary">Facebook</a></li>
+        <li class="list-group-item"><a href="user/facebooklogin" class="btn btn-info">Twitter</a></li>
+        <li class="list-group-item"><a href="user/facebooklogin" class="btn btn-danger">Google+</a></li>
+      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Modal -->
+
          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
          <script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
         <div class="container">
