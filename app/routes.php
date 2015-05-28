@@ -17,6 +17,8 @@ Route::get('/admin','UserController@IndexAdmin');
 
 //user
 Route::get('user/facebooklogin','UserController@LoginWithFacebook');
+Route::get('user/twitterlogin','UserController@LoginWithTwitter');
+Route::get('user/googlelogin','UserController@LoginWithGoogle');
 Route::post('user/login','UserController@Login');
 Route::get('user/logout','UserController@Logout');
 Route::get('user/list','UserController@GridUser');
