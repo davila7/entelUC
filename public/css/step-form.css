@@ -10,18 +10,19 @@ html {
 
 body {
 	font-family: montserrat, arial, verdana;
+	color: white;
 }
 /*form styles*/
 #msform {
-	margin: 50px auto;
+	margin: 10px auto; 
 	text-align: center;
-	position: relative;
+	/*position: relative;*/
 }
 #msform fieldset {
 	background: white;
 	border: 0 none;
 	border-radius: 3px;
-	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	/*box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);*/
 	padding: 0px;
 	
 	box-sizing: border-box;
@@ -49,7 +50,7 @@ body {
 /*buttons*/
 #msform .action-button {
 	width: 100px;
-	background: #27AE60;
+	background: #db3141;
 	font-weight: bold;
 	color: white;
 	border: 0 none;
@@ -76,7 +77,7 @@ body {
 }
 /*progressbar*/
 #progressbar {
-	margin-bottom: 30px;
+	margin-bottom: 60px;
 	overflow: hidden;
 	/*CSS counters to number the steps*/
 	counter-reset: step;
@@ -86,9 +87,10 @@ body {
 	color: black;
 	text-transform: uppercase;
 	font-size: 9px;
-	width: 33.33%;
+	width: 20%;
 	float: left;
 	position: relative;
+
 }
 #progressbar li:before {
 	content: counter(step);
@@ -120,9 +122,6 @@ body {
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,  #progressbar li.active:after{
-	background: #27AE60;
+	background: #db3141;
 	color: white;
 }
-
-
-

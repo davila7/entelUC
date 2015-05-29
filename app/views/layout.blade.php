@@ -22,10 +22,12 @@
  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <!-- Latest compiled and minified CSS -->
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/modernizr.js') }}"></script>
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/color-menu.css') }}" rel="stylesheet">
             <link href="{{ asset('css/step-form.css') }}" rel="stylesheet">
         {{ Rapyd::styles() }} 
 </head>
@@ -79,8 +81,20 @@
       </div>
       <div class="modal-body">
       <ul class="list-group">
-        <li class="list-group-item"><a href="user/facebooklogin" class="btn btn-primary">Facebook</a></li>
-        <li class="list-group-item"><a href="user/twitterlogin" class="btn btn-info">Twitter</a></li>
+        <li class="list-group-item">
+            <p>Ingresa tu email y contraseña.</p>
+            {{ Form::open(array('url' => 'user/login', 'class'=>'form-signin')) }}
+              <label for="inputEmail" class="sr-only">Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
+              <label for="inputPassword" class="sr-only">Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Password" required>
+              <br>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+            {{ Form::close() }}
+        </li>
+        <li class="list-group-item">O con tus Redes Sociales:</li>
+        <li class="list-group-item"><a href="user/facebooklogin" class="btn btn-primary">Facebook</a>
+        o <a href="user/twitterlogin" class="btn btn-info">Twitter</a></li>
       </ul>
       </div>
       <div class="modal-footer">
@@ -93,6 +107,7 @@
 
          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
          <script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
+         <script src="{{ asset('js/color_menu.js') }}"></script>
         <div class="container">
             @yield('content')
         </div>        

@@ -26,13 +26,16 @@
 	<!-- progressbar -->
 	<ul id="progressbar">
 		<li class="active">Elige el color de tu smartphone</li>
-		<li>Elige una opción para personalizar</li>
+		<li>Categoría</li>
 		<li>Personaliza</li>
+        <li>Detalles</li>
+        <li>Enviar</li>
 	</ul>
 	<!-- fieldsets -->
 	<fieldset>
-		<h2 class="fs-title">Paso 1</h2>
-		<h3 class="fs-subtitle">Elige el color de tu smartphone</h3>
+		<!--<h2 class="fs-title">Paso 1</h2>
+		<h3 class="fs-subtitle">Elige el color de tu smartphone</h3>-->
+        <br>
     	<div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-3">
@@ -64,13 +67,10 @@
 		<input type="button" name="next" class="next action-button" id="step-one" value="Siguiente" />
 	</fieldset>
 	<fieldset>
-		<h2 class="fs-title">Paso 2</h2>
-		<h3 class="fs-subtitle">¿Como te gustaría empezar?</h3>
+		<!--<h2 class="fs-title">Paso 2</h2>
+		<h3 class="fs-subtitle">¿Como te gustaría empezar?</h3>-->
+        <br>
 		<div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-4"><p class="label label-danger">Comienza desde cero</p></div>
-                <div class="col-sm-8"><p class="label label-danger">Elige uno de nuestras muestras</p></div>
-            </div>
             <div class="row">
                             <div class="col-sm-4">
                                 <a class="btn @if($step_two == 0) btn-success @else btn-default @endif option-step2" data-id="0">
@@ -96,14 +96,14 @@
 		<input type="button" name="next" class="next action-button" id="step-two" value="Siguiente" />
 	</fieldset>
 	<fieldset>
-        <h2 class="fs-title">Paso 3</h2>
-		<h3 class="fs-subtitle">Personaliza</h3>
+        <!--<h2 class="fs-title">Paso 3</h2>
+		<h3 class="fs-subtitle">Personaliza</h3>-->
             	   <!-- Main -->
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-3">
                                 <!-- Left column -->
-                                <strong><i class="glyphicon glyphicon-wrench"></i> Menú</strong>
+                                <strong style="color:#db3141;"><i class="glyphicon glyphicon-wrench"></i> Menú</strong>
                                 <hr>
                                 <ul class="nav nav-stacked">
                                      @foreach ($categories as $key=>$cat)
@@ -157,34 +157,50 @@
                                     </div>
                                     <!--/col-->
                                     <div class="col-md-4">
-                                        <div class="panel panel-success">
-                                            <div class="panel-heading text-center">
-                                                <h4 class="center-block">Öwn</h4></div>
-                                            <div class="panel-body">
-                                                @if (Auth::check())  
-                                                    FORMULARIO DE ORDEN ACÁ
-                                                @else
-                                                    <p>Ingresa tu email y contraseña.</p>
-                                                      {{ Form::open(array('url' => 'user/login', 'class'=>'form-signin')) }}
-                                                        <label for="inputEmail" class="sr-only">Email</label>
-                                                        <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
-                                                        <label for="inputPassword" class="sr-only">Password</label>
-                                                        <input type="password" name="password" class="form-control" placeholder="Password" required>
-                                                        <br>
-                                                        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
-                                                      {{ Form::close() }}
-                                              @endif
-                                        </div>
-                                        
-                                        </div>
-                                        <!--/panel-->
-                    
+                                                <nav id="cd-vertical-nav">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#section1" data-number="1">
+                                                                <span class="cd-dot" style="background-color:blue;" ></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section2" data-number="2">
+                                                                <span class="cd-dot" style="background-color:black;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section3" data-number="3">
+                                                                <span class="cd-dot" style="background-color:red;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section4" data-number="4">
+                                                                <span class="cd-dot" style="background-color:aliceblue;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section5" data-number="5">
+                                                                <span class="cd-dot" style="background-color:aquamarine;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section6" data-number="6">
+                                                                <span class="cd-dot" style="background-color:darkorchid;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
                                     </div>
                                     <!--/col-span-6-->
-                    
                                 </div>
                                 <!--/row-->
-                                 
                             <!--/col-span-9-->
                         </div>
                         <div class="row">
@@ -280,7 +296,23 @@
                         </div>
                         <!-- /.container -->
     <input type="button" name="previous" class="previous action-button" value="Anterior" />
+    <input type="button" name="next" class="next action-button" id="step-three" value="Siguiente" />
+    
 	</fieldset>
+    <fieldset>
+        <div class="container-fluid">
+            Detalles aquí
+            <input type="button" name="previous" class="previous action-button" value="Anterior" />
+            <input type="button" name="next" class="next action-button" id="step-three" value="Siguiente" />
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="container-fluid">
+            Enviar aquí
+            <input type="button" name="previous" class="previous action-button" value="Anterior" />
+            <input type="button" name="next" class="next action-button" id="step-three" value="Siguiente" />
+        </div>
+    </fieldset>
 </div>    
 
 
