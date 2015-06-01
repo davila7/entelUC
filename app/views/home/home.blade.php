@@ -43,24 +43,28 @@
                              <img src="{{ asset('uploads/options/own.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                  </a>
+                                 <p>Blanco</p>
                             </div>
                             <div class="col-sm-3">
                                 <a class="btn @if($step_one == 2) btn-success @else btn-default @endif option-step1" data-id="2">
                               <img src="{{ asset('uploads/options/own2.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                   </a>
+                                  <p>Negro</p>
                             </div>
                             <div class="col-sm-3">
                                 <a class="btn @if($step_one == 3) btn-success @else btn-default @endif option-step1" data-id="2">
                               <img src="{{ asset('uploads/options/own2.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                   </a>
+                                  <p>Dorado</p>
                             </div>
                             <div class="col-sm-3">
                                 <a class="btn @if($step_one == 4) btn-success @else btn-default @endif option-step1" data-id="2">
                               <img src="{{ asset('uploads/options/own2.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                   </a>
+                                  <p>Plateado</p>
                             </div>
                         </div>
         </div>     
@@ -77,18 +81,21 @@
                                     <img src="{{ asset('uploads/options/own.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                 </a>
+                                <p>Lisa</p>
                             </div>
                             <div class="col-sm-4">
                                 <a class="btn @if($step_two == 1) btn-success @else btn-default @endif option-step2" data-id="1">
                                     <img src="{{ asset('uploads/options/own.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                 </a>
+                                <p>Textura</p>
                             </div>
                             <div class="col-sm-4">
                                 <a class="btn @if($step_two == 2) btn-success @else btn-default @endif option-step2" data-id="2">
                                     <img src="{{ asset('uploads/options/own.png') }}" id="data_image"
                                             height="300" width="300" class="img-responsive center-block" />
                                 </a>
+                                <p>Calado</p>
                             </div>
               </div>
         </div>                        
@@ -157,7 +164,7 @@
                                     </div>
                                     <!--/col-->
                                     <div class="col-md-4">
-                                                <nav id="cd-vertical-nav">
+                                                <nav id="cd-vertical-nav" style="color:white;">
                                                     <ul>
                                                         <li>
                                                             <a href="#section1" data-number="1">
@@ -300,18 +307,151 @@
     
 	</fieldset>
     <fieldset>
-        <div class="container-fluid">
-            Detalles aquí
-            <input type="button" name="previous" class="previous action-button" value="Anterior" />
-            <input type="button" name="next" class="next action-button" id="step-three" value="Siguiente" />
-        </div>
+        <!--<h2 class="fs-title">Paso 3</h2>
+        <h3 class="fs-subtitle">Personaliza</h3>-->
+                   <!-- Main -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <!-- Left column -->
+                                <strong style="color:#db3141;"><i class="glyphicon glyphicon-wrench"></i> Menú</strong>
+                                <hr>
+                                <ul class="nav nav-stacked">
+                                     @foreach ($categories as $key=>$cat)
+                                     <li class="nav-header">
+                                        <a href="#" data-toggle="collapse" data-target="#menu{{ $key }}">
+                                            <img class="img-rounded" src="{{ asset('img/icons/'.$cat->icon) }}" height="30" width="30" /> {{ $cat->name }} <i class="glyphicon glyphicon-chevron-right"></i></a>
+                                        <ul class="nav nav-stacked collapse" id="menu{{ $key }}">
+                                            @foreach($cat->subcategories as $subcat)
+                                            <li><a href="#" data-id="{{ $subcat->id }}" class="subcat" >
+                                                <i class="glyphicon glyphicon-circle"></i> 
+                                                <img class="img-rounded" src="{{ asset('img/icons/'.$subcat->icon) }}" height="30" width="30" /> {{ $subcat->name }}
+                                                </a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <!-- /col-3 -->
+                            <div class="col-sm-9">
+                                <div class="row">
+                                    <!-- center left-->
+                                    <div class="col-md-8">
+                                        <div id="content-btn">
+                                            <div class="btn-group btn-group-justified" id="div_options">
+                                                <a href="#" class="btn btn-primary col-sm-3 hide btn_options" data-id="" id="hide_opt" >
+                                                    <img src="" height="20" width="20" class="img_options img-circle" />
+                                                    <div class="text_options"><br> Option Hide</div>
+                                                </a>
+                                            </div>
+                                            <div class="btn-group btn-group-justified msg">
+                                                <div class="alert alert-info">
+                                                        <!--<button type="button" class="close" data-dismiss="alert">×</button>-->
+                                                        Seleccione una opción del menú.
+                                                </div>
+                                            </div>
+                                        </div>
+                    
+                                        <hr>
+                    
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                    
+                                            <img src="{{ asset('uploads/options/own.png') }}" id="image"
+                                            height="300" width="300" class="img-responsive center-block" />
+                                            </div>
+                                            <!--/panel-body-->
+                                        </div>
+                                        <!--/panel-->
+                                    </div>
+                                    <!--/col-->
+                                    <div class="col-md-4">
+                                                <nav id="cd-vertical-nav" style="color:white;">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#section1" data-number="1">
+                                                                <span class="cd-dot" style="background-color:blue;" ></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section2" data-number="2">
+                                                                <span class="cd-dot" style="background-color:black;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section3" data-number="3">
+                                                                <span class="cd-dot" style="background-color:red;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section4" data-number="4">
+                                                                <span class="cd-dot" style="background-color:aliceblue;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section5" data-number="5">
+                                                                <span class="cd-dot" style="background-color:aquamarine;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#section6" data-number="6">
+                                                                <span class="cd-dot" style="background-color:darkorchid;"></span>
+                                                                <span class="cd-label">Color</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <input type="button" name="previous" class="previous action-button" value="Anterior" />
+    <input type="button" name="next" class="next action-button" id="step-three" value="Siguiente" />
+    
     </fieldset>
     <fieldset>
+        <h2 class="fs-title">Enviar Datos</h2>
+        <!--<h3 class="fs-subtitle">Ultimo paso</h3>-->
         <div class="container-fluid">
-            Enviar aquí
-            <input type="button" name="previous" class="previous action-button" value="Anterior" />
-            <input type="button" name="next" class="next action-button" id="step-three" value="Siguiente" />
-        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-6">
+                              <form>
+                                  <div class="form-group">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    <input type="email" class="form-control" placeholder="Email">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputPassword1">Dirección</label>
+                                    <input type="text" class="form-control" placeholder="Dirección">
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Check me out
+                                    </label>
+                                  </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                                <a class="btn @if($step_one == 4) btn-success @else btn-default @endif option-step1" data-id="2">
+                              <img src="{{ asset('uploads/options/own2.png') }}" id="data_image"
+                                            height="300" width="300" class="img-responsive center-block" />
+                                  </a>
+                                  <p>Tu selección</p>
+                            </div>
+                        </div>
+        </div>     
+        <input type="button" name="previous" class="previous action-button" value="Anterior" />
+        <input type="button" name="next" class="next action-button" id="step-one" value="Enviar" />
     </fieldset>
 </div>    
 

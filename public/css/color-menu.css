@@ -5,7 +5,7 @@ Modules - reusable parts of our design
 -------------------------------- */
 
 .no-touch #cd-vertical-nav {
-  position: inherit;
+  position: absolute;
   right: 40px;
   top: 50%;
   bottom: auto;
