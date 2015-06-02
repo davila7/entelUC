@@ -143,6 +143,8 @@ class UserController extends BaseController {
         $grid->add('username','Nombre de Usuario', true);
         $grid->add('documento','Rut', true);
         $grid->add('email','Email', true);
+        $grid->add('{{ !empty($facebook) }}','Facebook');
+        $grid->add('{{ !empty($twitter) }}','Twitter');
         $grid->add('esAdmin','Admin');
         $grid->add('active','Activo', true);
         $grid->edit(url().'/user/edit', 'Editar/Borrar','modify|delete');
