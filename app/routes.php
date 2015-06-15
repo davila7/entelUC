@@ -48,6 +48,7 @@ Route::get('/step_two/{val}/{id_user}','HomeController@GetStepTwo');
 
 //orders
 Route::get('orders/list','OrdersController@GridOrders');
+Route::get('sendOrder/{email}/{codigo}/{address}','OrdersController@SendOrder');
 
 //selection
 Route::get('selection/list','OrdersController@GridSelection');

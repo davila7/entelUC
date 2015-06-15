@@ -14,7 +14,8 @@ class OptionsController extends BaseController {
         $grid->attributes(array("class"=>"table table-striped"));
         $grid->add('id','ID', true);
         $grid->add('name','Nombre', true);
-        $grid->add('subcategories.name','Sub Categoría');
+        $grid->add('color','Color', true);
+        $grid->add('subcategories.name','Sub Categoría', 'id_subcategories');
         $grid->edit(url().'/options/edit', 'Editar/Borrar','modify|delete');
         $grid->link('/options/create', 'Crear Nueva', 'TR');
         $grid->link("subcategories/list","Lista Sub-Categorías", "TR");
@@ -29,6 +30,7 @@ class OptionsController extends BaseController {
         $edit->label('Opciones');
         $edit->link("options/list","Lista Opciones", "TR")->back();
         $edit->add('name','Nombre', 'text')->rule('required');
+        $edit->add('color','Color', 'text')->rule('required');
         $edit->add('description','Descripción', 'textarea')->rule('required');
         $edit->add('id_subcategories','Sub Categoría','select')->options(SubCategories::lists('name', 'id'));
         $edit->add('image','Imagen', 'image')->move('uploads/options/')->fit(240, 160)->preview(120,80);

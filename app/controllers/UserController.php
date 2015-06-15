@@ -146,6 +146,7 @@ class UserController extends BaseController {
         $grid->add('{{ !empty($facebook) }}','Facebook');
         $grid->add('{{ !empty($twitter) }}','Twitter');
         $grid->add('esAdmin','Admin');
+        $grid->add('codigo','Codigo');
         $grid->add('active','Activo', true);
         $grid->edit(url().'/user/edit', 'Editar/Borrar','modify|delete');
         $grid->link('/user/create', 'Crear Nuevo', 'TR');
@@ -162,11 +163,11 @@ class UserController extends BaseController {
         $edit->add('username','Nombre', 'text')->rule('required');
         $edit->add('email','Email', 'text')->rule('required');
         $edit->add('documento','RUT', 'text')->rule('required');
-        $edit->add('active','Activo', 'checkbox')->rule('required');
+        $edit->add('codigo','Código', 'text')->rule('required');
         $edit->add('password','Password', 'password');
         $edit->add('active','Activo','checkbox');
         
-        return View::make('user.crud', compact('edit'));
+        return $edit->view('user.crud', compact('edit'));
     }
 
 }

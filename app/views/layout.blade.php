@@ -26,7 +26,6 @@
         <!--[if lt IE 9]>
             <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <link href="{{ asset('css/color-menu.css') }}" rel="stylesheet">
             <link href="{{ asset('css/step-form.css') }}" rel="stylesheet">
         {{ Rapyd::styles() }} 

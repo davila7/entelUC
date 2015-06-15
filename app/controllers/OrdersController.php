@@ -62,24 +62,86 @@ class OrdersController extends BaseController {
     public function getSaveSelection($id_option, $id_user){
         $id_pre = Session::get('id_preselection');
         $subcat = DB::table('selection')
-                            ->where('id_user', $id_user)
-                            ->lists('id_subcategories');
-        $id_subcategories = Options::find($id_option)->id_subcategories;
-
-        if(in_array($id_subcategories, $subcat)){
-            $sel = Selection::where('id_user', $id_user)
-                            ->where('id_subcategories', $id_subcategories)
-                            ->first();
-            $sel->id_option = $id_option;
-            $sel->save();
-        }else{
+                            ->where('id_user', $id_user)->delete();
+            $id_subcategories = Options::find($id_option)->id_subcategories;
             $sel = new Selection;
             $sel->id_user = $id_user;
             $sel->id_option = $id_option;
             $sel->id_subcategories = $id_subcategories;
             $sel->id_preselection = $id_pre;
             $sel->save();
+
+        return Response::json('ok');
+    }
+
+    public function SendOrder($email, $codigo, $address){
+        $user = User::where('email', $email)->where('codigo',$codigo)->first();
+        $msg = 'ok';
+        if(isset($user) && $user->active == true){
+            $selection = Selection::where('id_user', $user->id)->first();
+            if(isset($selection)){
+                $order = new Orders;
+                $order->status = '1';
+                $order->id_selection = $selection->id;
+                $order->id_user = $user->id;
+                $order->address = $address;
+                $order->save();
+                $step_one = PreSelection::where('id', $selection->id_preselection)->first()->step_one;
+                switch ($step_one) {
+                    case '1':
+                        $paso_uno = "Blanco";
+                        break;
+                    case '2':
+                        $paso_uno = "Negro";
+                        break;
+                    case '3':
+                        $paso_uno = "Dorado";
+                        break;
+                    case '4':
+                        $paso_uno = "Plateado";
+                        break;
+                    default:
+                        $paso_uno = 'Plateado';
+                        break;
+                    }
+                $name_categoria = SubCategories::find($selection->id_subcategories)->first()->name;
+                $option = Options::where('id',$selection->id_option)->first();
+                $user_name = $user->username;
+                $email = $email;
+
+                $data = array(
+                    "user"=>$user_name,
+                    "email"=>$email,
+                    "paso_uno"=>$paso_uno,
+                    "option_name"=>$option->name,
+                    "option_color"=>$option->color,
+                    "address"=>$address
+                    );
+                //email al cliente
+                $emails = array($email);
+                Mail::send('emails.order', $data, function($message) use ($emails)
+                {
+                    $message->from('own@proyectoentel.com', 'Entel OWN');
+                    $message->to($emails, 'test')->subject('Orden recibida');
+                });
+
+                //email al admin
+                $emails = array('dan.avila7@gmail.com');
+                Mail::send('emails.order', $data, function($message) use ($emails)
+                {
+                    $message->from('own@proyectoentel.com', 'Entel OWN');
+                    $message->to($emails, 'test')->subject('Nueva Orden');
+                });
+
+
+            }else{
+                $msn = 'not ok 1';
+            }
+        }else{
+            $msg = 'not ok 2';
         }
+        return Response::json($msg);
+
     }
 
 }

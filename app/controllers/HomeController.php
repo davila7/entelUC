@@ -46,7 +46,8 @@ class HomeController extends BaseController {
 				'id'=>$opt->id,
 				'name'=>$opt->name,
 				'icon'=>$opt->icon,
-				'image'=>$opt->image
+				'image'=>$opt->image,
+				'color'=>$opt->color
 			);
 		}
 		return Response::json($data);
