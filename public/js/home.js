@@ -10,16 +10,21 @@ $(function() {
 		    	url: $('#base_url').val()+'/sendOrder/'+email+'/'+codigo+'/'+address,
 		    	dataType: 'json',
 		    	success: function (data) {
+		    		$('#form-send').hide();
+		    		$('#require_alert').addClass('hide');
+		    		$('#success_alert').removeClass('hide');
 					$('#success_alert').show();
 		    	}
 			});  
 		}else{
+			$('#require_alert').removeClass('hide');
 			$('#require_alert').show();
 		}     
 	});
 
 	$(document).on("click", ".color_opt", function() {	
 		id = $(this).attr('data-id');
+		$('#image_index3').removeClass('hide');
 		image = $(this).attr('data-src');
 		url = $('#base_url').val()+'/uploads/options/'+image;
         if($('#id_user').val() != ' 0 '){
@@ -29,12 +34,14 @@ $(function() {
 		    	dataType: 'json',
 		    	success: function (data) {
 					$('#image_index2').attr('src',url);
+					$('#image_index3').addClass('hide');
 		    	}
 			});  
 		}else{
 				$('.login-required').fadeIn('slow');
 				setTimeout(function(){ $('.login-required').hide("slow"); }, 4000);
 				$('#image_index2').attr('src',url);   
+				$('#image_index3').addClass('hide');
 		}      
 	});
 

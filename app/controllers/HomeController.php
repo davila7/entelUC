@@ -21,6 +21,7 @@ class HomeController extends BaseController {
 
 		$step_one = '';
 		$step_two = '';
+		$existe = false;
 		if(Auth::check()){
 			$pre1 = PreSelection::where('id_user', Auth::user()->id)->first();
 			if(isset($pre1))
@@ -29,15 +30,21 @@ class HomeController extends BaseController {
 			$pre2 = PreSelection::where('id_user', Auth::user()->id)->first();
 			if(isset($pre2))
 			$step_two = $pre2->step_two;
+
+			$order = Orders::where('id_user',  Auth::user()->id)->first();
+			if(isset($order)){
+				$existe = true;
+			}
 		}
-		
+
 
 		return View::make('home.home')->with('categories',$categories)
 									->with('error_login', false)
 									->with('step_one', $step_one)
-									->with('step_two', $step_two);
+									->with('step_two', $step_two)
+									->with('existeOrder', $existe);
 	}
-	
+
 	public function GetOptions($id){
 		$options = Options::where('id_subcategories',$id)->get();
 		$data = array();
@@ -52,7 +59,7 @@ class HomeController extends BaseController {
 		}
 		return Response::json($data);
 	}
-	
+
 	public function GetImage($id){
 		$option = Options::find($id);
 		return Response::json($option->image);

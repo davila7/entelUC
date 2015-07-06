@@ -9,20 +9,23 @@ class OrdersController extends BaseController {
         //$filter->add('name','Buscar por Nombre', 'text');
         //$filter->submit('search');
         //$filter->reset('reset');
-        
-        $grid = DataGrid::source($filter);  
-        $grid->attributes(array("class"=>"table table-striped"));
-        $grid->add('id','ID', true);
-        $grid->add('status','Status', true);
-        $grid->add('user.username','Usuario');
-        $grid->edit(url().'/orders/edit', 'Editar/Borrar','modify|delete');
-        //$grid->link('/orders/create', 'Crear Nueva', 'TR');
-        $grid->link("selection/list","Lista Selecciones", "TR");
-        $grid->orderBy('status','desc'); 
-        $grid->paginate(10); 
+
+        $grid = DataSet::source($filter);
+        $grid->paginate(10);
+				$grid->build();
 
         return View::make('orders.list', compact('filter', 'grid'));
 	}
+
+	public function GetSelection($id, $id_user){
+        //echo $id;
+        //echo $id_user;
+                //$selection = DB::table('selection')->first();
+				$selection = Selection::find($id);
+                //echo $selection->id_subcategories;
+				$user = User::find($id_user);
+				return View::make('orders.selection', compact('selection','user'));
+		}
 
 	public function CrudOrders(){
         $edit = DataEdit::source(new Options());
@@ -39,8 +42,8 @@ class OrdersController extends BaseController {
         //$filter->add('name','Buscar por Nombre', 'text');
         //$filter->submit('search');
         //$filter->reset('reset');
-        
-        $grid = DataGrid::source($filter);  
+
+        $grid = DataGrid::source($filter);
         $grid->attributes(array("class"=>"table table-striped"));
         $grid->add('id','ID', true);
         $grid->add('option.subcategories.categories.name','Categoría');
@@ -52,8 +55,8 @@ class OrdersController extends BaseController {
         //$grid->edit(url().'/orders/edit', 'Editar/Borrar','modify|delete');
         //$grid->link('/orders/create', 'Crear Nueva', 'TR');
         $grid->link("selection/list","Lista Selecciones", "TR");
-        $grid->orderBy('id','desc'); 
-        $grid->paginate(10); 
+        $grid->orderBy('id','desc');
+        $grid->paginate(10);
 
         return View::make('selection.list', compact('filter', 'grid'));
     }

@@ -51,6 +51,6 @@ Route::get('orders/list','OrdersController@GridOrders');
 Route::get('sendOrder/{email}/{codigo}/{address}','OrdersController@SendOrder');
 
 //selection
+Route::get('selection/{id}/{id_user}','OrdersController@GetSelection');
 Route::get('selection/list','OrdersController@GridSelection');
 Route::get('getSaveSelection/{id}/{id_user}','OrdersController@GetSaveSelection');
-

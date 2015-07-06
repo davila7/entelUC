@@ -28,27 +28,27 @@
         <![endif]-->
         <link href="{{ asset('css/color-menu.css') }}" rel="stylesheet">
             <link href="{{ asset('css/step-form.css') }}" rel="stylesheet">
-        {{ Rapyd::styles() }} 
+        {{ Rapyd::styles() }}
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
 </head>
-  <body>
+  <body style="font-family: 'Source Sans Pro', sans-serif;">
     <input type="hidden" id="base_url" value="{{ URL::to('/'); }}" />
     <input type="hidden" id="id_user" value="@if (Auth::check()){{ Auth::user()->id }}@else 0 @endif" />
     <div id="top-nav" class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Entel</a>
-            <a class="navbar-brand" href="/"><img src="{{ asset('img/own-logo.png') }}" height="30" width="80" /></a>
+            <a class="navbar-brand" href="{{ URL::to('/'); }}"><img src="{{ asset('img/own-logo.png') }}" height="30" width="80" /></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
-                    @if (Auth::user()->esAdmin) 
-                	   <li><a href="/admin"><i class="glyphicon glyphicon-cog"></i> Panel de Control</a></li>
+                    @if (Auth::user()->esAdmin)
+                	   <li><a href="{{ URL::to('/admin'); }}"><i class="glyphicon glyphicon-cog"></i> Panel de Control</a></li>
                     @endif
                 @endif
                <!-- <li class="dropdown">
@@ -57,7 +57,7 @@
                         <li><a href="#">My Profile</a></li>
                     </ul>
                 </li>-->
-                 @if (Auth::check()) 
+                 @if (Auth::check())
                  <li><a><i class="glyphicon glyphicon-user"></i> {{ Auth::user()->username }}</a></li>
                 <li><a href="{{ URL::to('/user/logout'); }}"><i class="glyphicon glyphicon-lock"></i> Cerrar Sesión</a></li>
                  @else
@@ -109,7 +109,7 @@
          <script src="{{ asset('js/color_menu.js') }}"></script>
         <div class="container">
             @yield('content')
-        </div>        
+        </div>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script src="{{ asset('js/script.js') }}"></script>
           <script src="{{ asset('js/step-form.js') }}"></script>

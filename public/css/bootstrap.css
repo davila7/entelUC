@@ -4004,6 +4004,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-stacked > li {
   float: none;
+  background-color: #db3141;
 }
 .nav-stacked > li + li {
   margin-top: 2px;

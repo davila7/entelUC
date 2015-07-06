@@ -30,7 +30,7 @@ $(".next").click(function(){
 			//3. increase opacity of next_fs to 1 as it moves in
 			opacity = 1 - now;
 			current_fs.css({'transform': 'scale('+scale+')'});
-			next_fs.css({'left': left, 'opacity': opacity});
+			next_fs.css({'left': '4%', 'opacity': opacity});
 		}, 
 		duration: 800, 
 		complete: function(){
